@@ -19,7 +19,7 @@ f_cso_status = urllib2.urlopen("http://your.kingcounty.gov/dnrp/library/wastewat
 
 # File has a header line that looks like this, so extract the time string:
 # CSO_TagName,04-01-2016 09:30:01 AM
-# We want to use this rather than the system time when the script/cronjob returns
+# We want to use this rather than the system time when the script/cronjob runs
 # because it is the actual time the data were queried.
 status_timestamp = f_cso_status.readline().strip().split(',')[1]
 
