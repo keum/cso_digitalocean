@@ -2,6 +2,7 @@
 
 Requires [geojson](https://pypi.python.org/pypi/geojson/).
 
+## Background
 Reads the CSO status from King County's web server and combines it with a CSV file of the point coordinates,
 then creates a GeoJSON file of the current CSO status for King County and Seattle.
 
@@ -21,7 +22,7 @@ The coordinates (lat, lon, EPSG 3857) are in a CSV file.
 		ALKI,-122.4225,47.57024,King County CSO: Alki,051
 		ALSK,-122.406947,47.559442,King County CSO: Alaska St SW,055
 		...
-
+## Output
 The current CSO status is zipped up with the coordinates and properties for each CSO location. 
 Properties included are:
 
@@ -36,3 +37,18 @@ Properties included are:
 | marker-color  | <ol> <li>Red</li> <li>Yellow</li> <li>Green</li> <li>Grey</li> </ol>                                    							 |
 | marker-symbol | <ol> <li>square</li> <li>triangle</li> <li>circle</li> <li>cross</li> </ol>                                                       |
 | marker-size   | <ol> <li>large</li> <li>medium</li> <li>small</li> <li>small</li> </ol>                                                   |
+
+## Running with cron
+
+Make sure that both `cso_status_geojson.py` and `get_cso_status.sh` are executable. 
+Modify the path in `get_cso_status.sh` to reflect where the repo was cloned.
+		
+		#!/bin/bash
+
+		# change this to your path
+		cd /home/fred/github/cso_digitalocean
+		./cso_status_geojson.py
+		
+Then use `crontab -e` to set up the cron job. This example will run every 15 minutes (at :00, :15, :30, and :45):
+
+		*/15 * * * * /home/fred/github/cso_digitalocean/get_cso_status.sh # KC CSO status
