@@ -32,7 +32,7 @@ Properties included are:
 | Name          | Long name for CSO location                                                                                                         |
 | Time_stamp    | Timestamp of most recent query                                                                                                     |
 | CSO_Status    | CSO status code (1 - 4)                                                                                                            |
-| Description   | Description of CSO status code.  1: Overflowing now 2: Overflowed in the last 48 hours 3: No recent overflow 4: Data not available |
-| marker-color  | test                                                                                                                               |
-| marker-symbol | test                                                                                                                               |
-| marker-size   | test                                                                                                                               |
+| Description   | Description of CSO status code. <ol> <li>Overflowing now</li> <li>Overflowed in the last 48 hours</li> <li>No recent overflow</li> <li>Data not available</li></ol>|
+| marker-color  | <ol> <li>Red</li> <li>Yellow</li> <li>Green</li> <li>Grey</li> </ol>                                    							 |
+| marker-symbol | <ol> <li>square</li> <li>triangle</li> <li>circle</li> <li>cross</li> </ol>                                                       |
+| marker-size   | <ol> <li>large</li> <li>medium</li> <li>small</li> <li>small</li> </ol>                                                   |
