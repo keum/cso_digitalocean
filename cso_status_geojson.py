@@ -1,5 +1,4 @@
-#peter remove, not used# import sys
-#peter remove, not used# import os
+#!/usr/bin/python
 import subprocess
 import time
 import csv
@@ -9,11 +8,11 @@ import json
 
 
 """
-Take status csv file from url and coordinate csv file to create
-data dictionary format and convert that format into geojson type.
-This geojson data can then be loaded into GitHub page to view
-using it's mapping component
+Creates a GeoJSON file of the current CSO status for King County and Seattle.
+Reads the CSO status from King County's web server and combines it with
+a CSV file of the point coordinates.
 
+The resulting GeoJSON file can be added to a webmap.
 """
 
 """
@@ -52,20 +51,17 @@ NEED a Data structure template in python to look like this then convert to  GeoJ
 cso_status_data = urllib2.urlopen("http://your.kingcounty.gov/dnrp/library/wastewater/cso/img/CSO.CSV")
 
 # Read csv file into a python list named cso_status_csv
-text = cso_status_data.readlines()  #reading each line of downloaded csv file
-cso_status_csv = csv.reader(text)   #creating new object call cso_status_csv from CSV file from url
-#debug# pprint.pprint(cso_status_csv)
+text = cso_status_data.readlines()  #read each line of downloaded csv file
+cso_status_csv = csv.reader(text)   #create new object called cso_status_csv from the KC server's csv file
 
 
-#Reading CSO with Coordinate in csv file locally and create list,
-#subtitue with full data file cso_coord.csv or partial_coord.csv for two point data
+# Read CSO Coordinate csv file locally and create list,
+# substitue with full data file cso_coord.csv or partial_coord.csv for two point data
 cso_cord = open('cso_coord.csv', 'r')
 reader = csv.DictReader(cso_cord)
 
 location = list (reader)
 cso_cord.close()
-#debug# pprint.pprint(location)
-
 
 """this the format we want to output
 -question: not sure how to iterate the location object into below formatted_data_dict
@@ -80,7 +76,7 @@ for row in location:
   		'geometry':{'coordinates':[(row['X_COORD'])],[(row['Y_COORD'])]}}
  """
 
-#Create dictionary with geojson template
+# Create dictionary with geojson template
 geojson_data_dict = {'type':'FeatureCollection','features':[]}
 
 
@@ -187,4 +183,3 @@ subprocess.call(['git', '--git-dir', out_file_fullpath_directory  +'/.git',
 subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
                 '--work-tree', out_file_fullpath_directory,
                 'push'])
-
