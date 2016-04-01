@@ -9,7 +9,7 @@ The resulting GeoJSON file can be added to a webmap.
 import urllib2
 import csv
 import geojson
-import subprocess
+from subprocess import call
 
 # ===================
 # RETRIEVE CSO STATUS
@@ -90,12 +90,7 @@ with open('cso_test_file.geojson', 'wb') as out_file:
 # =====================
 # PUSH UPDATE TO GITHUB
 # =====================
-# subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
-#                 '--work-tree', out_file_fullpath_directory,
-#                 'add', out_file_fullpath])
-# subprocess.call(['git', '--git-dir', out_file_fullpath_directory  +'/.git',
-#                 '--work-tree', out_file_fullpath_directory,
-#                 'commit', '-a', '-m', '"Data Upload: ' + time.strftime("%Y-%m-%d %I:%M:%S %p", time.localtime()) + '"'])
-# subprocess.call(['git', '--git-dir', out_file_fullpath_directory + '/.git',
-#                 '--work-tree', out_file_fullpath_directory,
-#                 'push'])
+# call is from the subprocess module
+call('git add .', shell = True)
+call('git commit -a "Status for' + status_timestamp + '"', shell = True)
+call('git push origin master', shell = True)

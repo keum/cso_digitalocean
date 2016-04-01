@@ -22,22 +22,3 @@ The coordinates (lat, lon, EPSG 3857) are in a CSV file.
 		ALSK,-122.406947,47.559442,King County CSO: Alaska St SW,055
 		...
 
-
-
-formatted_geojson_data_dict = {'type':'FeatureCollection','features':
-[{'type':'Feature','properties':{},'geometry':{'type':'Point','coordinates':[]}}]}
-
-NEED a Data structure template in python to look like this then convert to  GeoJSON
-
-{'type':'FeatureCollection",
-  'features': [{'type': 'Features',
-                'properties':{'CSO_TagName': 'ALKI',
-                              'Value': 3},
-                'geometries':{'type':'point',
-                'coordinates':[-122.322,
-                              47.607]}
-                }
-               ]
-}
-
-"""
