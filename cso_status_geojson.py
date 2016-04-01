@@ -92,5 +92,5 @@ with open('cso_test_file.geojson', 'wb') as out_file:
 # =====================
 # call is from the subprocess module
 call('git add .', shell = True)
-call('git commit -a "Status for' + status_timestamp + '"', shell = True)
+call('git commit -m "Status for' + status_timestamp + '"', shell = True)
 call('git push origin master', shell = True)
