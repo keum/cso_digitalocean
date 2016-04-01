@@ -1,0 +1,5 @@
+old_script.geojson
+new_script.geojson
+*~
+*.pyo
+*.pyc
