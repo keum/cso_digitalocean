@@ -1,4 +1,4 @@
-# King County Real-Time CSO Status Viewer
+# King County Real-Time CSO Status
 
 Requires [geojson](https://pypi.python.org/pypi/geojson/).
 
