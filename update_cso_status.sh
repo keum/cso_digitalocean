@@ -10,4 +10,4 @@ timestamp=$(<timestamp.txt)
 # push update to git
 git add .
 git commit -m "Status for $timestamp"
-git push
+git push origin master
