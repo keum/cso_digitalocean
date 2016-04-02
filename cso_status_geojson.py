@@ -23,6 +23,10 @@ f_cso_status = urllib2.urlopen("http://your.kingcounty.gov/dnrp/library/wastewat
 # because it is the actual time the data were queried.
 status_timestamp = f_cso_status.readline().strip().split(',')[1]
 
+# Dump this out to a text file for the shell script to read.
+with open('timestamp.txt','wb') as fts:
+    fts.write(status_timestamp)
+
 # Read rest of csv file into a python list named cso_status_csv
 cso_status_csv = f_cso_status.readlines()  #read each line of downloaded csv file
 cso_status = {} # initialize empty dictionary for CSO status_timestamp
@@ -86,11 +90,3 @@ cso_feature_collection = geojson.FeatureCollection(cso_feature_list)
 # Dump the FeatureCollection to a GeoJSON file in the same directory as this script.
 with open('cso_test_file.geojson', 'wb') as out_file:
    out_file.write(geojson.dumps(cso_feature_collection))
-
-# =====================
-# PUSH UPDATE TO GITHUB
-# =====================
-# call is from the subprocess module
-call('git add .', shell = True)
-call('git commit -m "Status for ' + status_timestamp + '"', shell = True)
-call('git push origin master', shell = True)
