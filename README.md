@@ -40,15 +40,9 @@ Properties included are:
 
 ## Running with cron
 
-Make sure that both `cso_status_geojson.py` and `get_cso_status.sh` are executable. 
-Modify the path in `get_cso_status.sh` to reflect where the repo was cloned.
+Make sure that both `cso_status_geojson.py` and `update_cso_status.sh` are executable. (`chmod +x`).
+Modify the paths in `update_cso_status.sh` to reflect where the repo was cloned.
 		
-		#!/bin/bash
-
-		# change this to your path
-		cd /home/fred/github/cso_digitalocean
-		./cso_status_geojson.py
-		
-Then use `crontab -e` to set up the cron job. This example will run every 15 minutes (at :00, :15, :30, and :45):
+Then use `crontab -e` to set up the cron job. The example below will run every 15 minutes (at :00, :15, :30, and :45):
 
 		*/15 * * * * /home/fred/github/cso_digitalocean/get_cso_status.sh # KC CSO status
