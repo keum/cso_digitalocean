@@ -45,4 +45,4 @@ Modify the paths in `update_cso_status.sh` to reflect where the repo was cloned.
 		
 Then use `crontab -e` to set up the cron job. The example below will run every 15 minutes (at :00, :15, :30, and :45):
 
-		*/15 * * * * /home/fred/github/cso_digitalocean/get_cso_status.sh # KC CSO status
+		*/15 * * * * /home/fred/github/cso_digitalocean/update_cso_status.sh # KC_CSO
