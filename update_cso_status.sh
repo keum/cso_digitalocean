@@ -8,6 +8,6 @@ cd /home/fred/github/cso_digitalocean
 timestamp=$(<timestamp.txt)
 
 # push update to git
-git add cso_test_file.geojson
+git add cso_test_file.geojson timestamp.txt
 git commit -m "Status for $timestamp"
 git push origin master
