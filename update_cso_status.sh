@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# source /home/fred/.bash_profile
-
 # change this to your path
-cd /home/ubuntu/workspace/cso_digitalocean
+cd /home/peter/cso_digitalocean
 ./cso_status_geojson.py
 
 # grab timestamp from file
